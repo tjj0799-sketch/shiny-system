@@ -1,0 +1,134 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>原神 × 烟台大学 联动首页</title>
+  <style>
+    :root {
+      --bg: #0b1220;
+      --card: rgba(255,255,255,0.08);
+      --text: #e6edf7;
+      --muted: #b7c2d9;
+      --accent: #7dd3fc;
+      --accent-2: #c084fc;
+      --gold: #fbbf24;
+    }
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      font-family: "PingFang SC", "Microsoft YaHei", system-ui, sans-serif;
+      color: var(--text);
+      background: radial-gradient(circle at 20% 20%, #1e3a8a 0%, transparent 35%),
+                  radial-gradient(circle at 85% 30%, #7c3aed 0%, transparent 35%),
+                  linear-gradient(160deg, #0b1220 0%, #111827 100%);
+      min-height: 100vh;
+    }
+    .container { width: min(1100px, 92%); margin: 0 auto; }
+    header { padding: 22px 0; position: sticky; top: 0; backdrop-filter: blur(8px); background: rgba(11,18,32,0.55); }
+    nav { display: flex; justify-content: space-between; align-items: center; }
+    .logo { font-weight: 800; letter-spacing: .5px; }
+    .nav-links { display: flex; gap: 18px; font-size: 14px; color: var(--muted); }
+    .hero { padding: 80px 0 60px; display: grid; gap: 30px; grid-template-columns: 1.15fr .85fr; align-items: center; }
+    .badge { display: inline-block; padding: 6px 12px; border: 1px solid rgba(125,211,252,0.5); border-radius: 999px; color: var(--accent); font-size: 13px; }
+    h1 { font-size: clamp(34px, 5vw, 58px); line-height: 1.1; margin: 16px 0; }
+    .gradient { background: linear-gradient(90deg, var(--accent), var(--accent-2)); -webkit-background-clip: text; background-clip: text; color: transparent; }
+    p { color: var(--muted); line-height: 1.75; }
+    .cta { display: flex; gap: 12px; margin-top: 26px; }
+    .btn { padding: 11px 18px; border-radius: 10px; text-decoration: none; font-weight: 700; }
+    .btn-primary { background: linear-gradient(90deg, #06b6d4, #8b5cf6); color: #fff; }
+    .btn-secondary { border: 1px solid rgba(255,255,255,.24); color: var(--text); }
+    .card {
+      background: var(--card);
+      border: 1px solid rgba(255,255,255,.12);
+      border-radius: 16px;
+      padding: 22px;
+      box-shadow: 0 10px 35px rgba(0,0,0,.25);
+    }
+    .event-cover {
+      height: 260px;
+      border-radius: 14px;
+      background: linear-gradient(135deg, rgba(14,165,233,.24), rgba(192,132,252,.24)),
+                  url('https://images.unsplash.com/photo-1519389950473-47ba0277781c?auto=format&fit=crop&w=1200&q=80') center/cover;
+      border: 1px solid rgba(255,255,255,.15);
+      position: relative;
+      overflow: hidden;
+    }
+    .event-cover::after { content: "原神 × 烟台大学"; position: absolute; left: 14px; bottom: 10px; font-weight: 800; color: #fff; text-shadow: 0 3px 8px rgba(0,0,0,.6); }
+    .section { padding: 28px 0 64px; }
+    .features { display: grid; grid-template-columns: repeat(3,1fr); gap: 16px; }
+    .feature h3 { margin-top: 0; color: var(--gold); }
+    .schedule { margin-top: 16px; }
+    .schedule li { margin-bottom: 8px; color: #d1ddf6; }
+    footer { padding: 24px 0 40px; color: #9fb0cc; font-size: 13px; text-align: center; }
+    @media (max-width: 900px) {
+      .hero { grid-template-columns: 1fr; }
+      .features { grid-template-columns: 1fr; }
+      .nav-links { display: none; }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="container">
+      <nav>
+        <div class="logo">TUD × Genshin</div>
+        <div class="nav-links">
+          <span>活动介绍</span><span>联动亮点</span><span>时间地点</span>
+        </div>
+      </nav>
+    </div>
+  </header>
+
+  <main class="container">
+    <section class="hero">
+      <div>
+        <span class="badge">2026 校园特别企划</span>
+        <h1>原神与<span class="gradient">烟台大学</span><br/>梦幻联动主页</h1>
+        <p>
+          欢迎来到「提瓦特校园季」！在这里你可以查看联动活动资讯、校园打卡路线、限定周边领取方式，
+          以及舞台演出与互动游戏安排。
+        </p>
+        <div class="cta">
+          <a class="btn btn-primary" href="#detail">立即查看活动</a>
+          <a class="btn btn-secondary" href="#signup">预约报名</a>
+        </div>
+      </div>
+      <div class="card">
+        <div class="event-cover" aria-label="活动主视觉"></div>
+        <p style="margin-bottom:0; margin-top:14px;">地点：烟台大学 · 三元湖广场<br>时间：2026年5月18日 - 2026年5月20日</p>
+      </div>
+    </section>
+
+    <section class="section" id="detail">
+      <div class="features">
+        <article class="card feature">
+          <h3>⚔️ 角色主题展区</h3>
+          <p>设置蒙德、璃月、稻妻三大沉浸式展台，含打卡拍照点与剧情任务。</p>
+        </article>
+        <article class="card feature">
+          <h3>🎵 校园音乐会</h3>
+          <p>晚间舞台演绎原神经典曲目，邀请校乐团与社团联合演出。</p>
+        </article>
+        <article class="card feature">
+          <h3>🎁 限定周边兑换</h3>
+          <p>完成打卡任务可兑换联动徽章、明信片和校园纪念票根。</p>
+        </article>
+      </div>
+
+      <div class="card" style="margin-top:16px;" id="signup">
+        <h3 style="margin-top:0;">活动日程（示例）</h3>
+        <ul class="schedule">
+          <li>5月18日 10:00 - 开幕仪式 & 联动主线发布</li>
+          <li>5月19日 14:00 - 校园挑战赛（组队）</li>
+          <li>5月20日 19:30 - 原神主题音乐会 & 闭幕抽奖</li>
+        </ul>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    本页面为创意展示版，可根据实际活动信息继续扩展报名系统、新闻公告与地图导航。
+  </footer>
+</body>
+</html>
