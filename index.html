@@ -3,35 +3,43 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>言葉工作室｜网站搭建｜自动化解决方案</title>
+  <title>Nova Campus Studio｜校园网站搭建工作室</title>
   <style>
     :root {
-      --bg: #f5f7fb;
-      --card: #ffffff;
-      --text: #1f2937;
-      --muted: #6b7280;
-      --primary: #2563eb;
-      --line: #e5e7eb;
+      --bg: #f8f9ff;
+      --surface: #ffffff;
+      --text: #1f2333;
+      --muted: #697189;
+      --primary: #6f7bff;
+      --primary-soft: #edf0ff;
+      --line: #e9eaf3;
+      --accent: #4fd1c5;
+      --shadow: 0 16px 36px rgba(60, 69, 97, 0.08);
     }
 
     * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
 
     body {
       margin: 0;
-      font-family: "PingFang SC", "Microsoft YaHei", system-ui, sans-serif;
+      font-family: "PingFang SC", "Microsoft YaHei", system-ui, -apple-system, sans-serif;
       color: var(--text);
-      background: var(--bg);
+      background: linear-gradient(180deg, #f9faff 0%, #f7fbff 45%, #fdfcff 100%);
       line-height: 1.7;
     }
 
     .container {
-      width: min(1080px, 92%);
+      width: min(1120px, 92%);
       margin: 0 auto;
     }
 
     header {
-      background: #ffffff;
-      border-bottom: 1px solid var(--line);
+      position: sticky;
+      top: 0;
+      z-index: 10;
+      background: rgba(248, 249, 255, 0.85);
+      backdrop-filter: blur(10px);
+      border-bottom: 1px solid rgba(233, 234, 243, 0.8);
     }
 
     nav {
@@ -42,110 +50,256 @@
     }
 
     .logo {
-      font-weight: 700;
       font-size: 18px;
+      font-weight: 700;
+      letter-spacing: 0.2px;
     }
 
     .nav-links {
       display: flex;
       gap: 18px;
-      color: var(--muted);
       font-size: 14px;
     }
 
+    .nav-links a {
+      color: var(--muted);
+      text-decoration: none;
+    }
+
+    .section {
+      padding: 84px 0;
+      opacity: 0;
+      transform: translateY(24px);
+      animation: fadeInUp .7s ease forwards;
+    }
+
     .hero {
-      padding: 72px 0 50px;
       display: grid;
-      grid-template-columns: 1.2fr 0.8fr;
-      gap: 24px;
-      align-items: stretch;
+      grid-template-columns: 1.15fr 0.85fr;
+      gap: 28px;
+      align-items: center;
+      padding-top: 64px;
+    }
+
+    .badge {
+      display: inline-block;
+      padding: 7px 13px;
+      border-radius: 999px;
+      background: var(--primary-soft);
+      color: var(--primary);
+      font-size: 13px;
+      font-weight: 600;
+      margin-bottom: 14px;
     }
 
     h1 {
-      margin: 0 0 18px;
-      font-size: clamp(28px, 4.5vw, 46px);
+      margin: 0;
+      font-size: clamp(32px, 5vw, 50px);
       line-height: 1.2;
+      letter-spacing: -0.8px;
     }
 
-    p { margin: 0; color: var(--muted); }
-
-    .tag {
-      display: inline-block;
-      margin-bottom: 14px;
-      padding: 6px 12px;
-      background: #e8f0ff;
-      color: var(--primary);
-      border-radius: 999px;
-      font-size: 13px;
-      font-weight: 600;
+    .hero p {
+      margin: 18px 0 0;
+      color: var(--muted);
+      max-width: 620px;
     }
 
     .cta {
-      margin-top: 24px;
+      margin-top: 28px;
       display: flex;
       flex-wrap: wrap;
       gap: 12px;
     }
 
     .btn {
+      display: inline-block;
       text-decoration: none;
-      padding: 10px 16px;
-      border-radius: 8px;
-      font-weight: 600;
+      border-radius: 12px;
+      padding: 11px 18px;
       font-size: 14px;
+      font-weight: 600;
+      transition: transform .2s ease, box-shadow .2s ease;
     }
+
+    .btn:hover { transform: translateY(-1px); }
 
     .btn-primary {
       background: var(--primary);
       color: #fff;
+      box-shadow: 0 10px 24px rgba(111, 123, 255, 0.25);
     }
 
     .btn-secondary {
       border: 1px solid var(--line);
       color: var(--text);
-      background: #fff;
+      background: var(--surface);
     }
 
     .card {
-      background: var(--card);
+      background: var(--surface);
       border: 1px solid var(--line);
-      border-radius: 12px;
-      padding: 20px;
+      border-radius: 20px;
+      padding: 24px;
+      box-shadow: var(--shadow);
     }
 
-    .info h3 {
-      margin: 0 0 10px;
-      font-size: 18px;
+    .hero-side h3 {
+      margin: 0 0 12px;
+      font-size: 20px;
     }
 
-    .section {
-      padding: 8px 0 64px;
+    .hero-side p { color: var(--muted); margin: 0 0 10px; }
+
+    h2 {
+      margin: 0 0 20px;
+      font-size: clamp(24px, 4vw, 36px);
+      letter-spacing: -0.4px;
     }
 
-    .services {
+    .grid-4 {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 16px;
+    }
+
+    .service-card h3,
+    .price-card h3,
+    .case-card h3 {
+      margin: 0 0 8px;
+      font-size: 19px;
+    }
+
+    .service-card p,
+    .price-card p,
+    .case-card p,
+    .about p,
+    .contact p { color: var(--muted); margin: 0; }
+
+    .steps {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 16px;
+    }
+
+    .step {
+      position: relative;
+      padding-top: 8px;
+    }
+
+    .step span {
+      display: inline-flex;
+      width: 32px;
+      height: 32px;
+      border-radius: 50%;
+      align-items: center;
+      justify-content: center;
+      font-weight: 700;
+      background: var(--primary-soft);
+      color: var(--primary);
+      margin-bottom: 10px;
+    }
+
+    .step:not(:last-child)::after {
+      content: "";
+      position: absolute;
+      top: 24px;
+      right: -10px;
+      width: 20px;
+      height: 2px;
+      background: #d7dcf8;
+    }
+
+    .grid-3 {
       display: grid;
       grid-template-columns: repeat(3, 1fr);
       gap: 16px;
     }
 
-    .service h3 {
-      margin: 0 0 8px;
-      font-size: 18px;
+    .image-placeholder {
+      border-radius: 14px;
+      background: linear-gradient(135deg, #f2f4ff, #eef9ff);
+      border: 1px dashed #cbd3ff;
+      min-height: 144px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #7682b5;
+      font-size: 14px;
+      margin-bottom: 14px;
+    }
+
+    .tag-list {
+      margin-top: 12px;
+      font-size: 13px;
+      color: #6f7698;
+      background: #f5f7ff;
+      border-radius: 10px;
+      padding: 8px 10px;
+      display: inline-block;
+    }
+
+    .price-card strong {
+      font-size: 34px;
+      line-height: 1;
+      display: inline-block;
+      margin: 8px 0 12px;
+      color: var(--primary);
+    }
+
+    .price-card.featured {
+      border-color: #cfd5ff;
+      background: linear-gradient(180deg, #ffffff, #f7f8ff);
+    }
+
+    .about,
+    .contact {
+      max-width: 760px;
+    }
+
+    .contact .qr {
+      margin: 16px 0;
+      width: 180px;
+      aspect-ratio: 1;
+      border-radius: 16px;
+      border: 1px dashed #bac2ec;
+      background: #f6f8ff;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #6f789e;
+      font-size: 14px;
     }
 
     footer {
-      padding: 26px 0 40px;
-      color: var(--muted);
-      text-align: center;
-      font-size: 13px;
+      padding: 26px 0 34px;
       border-top: 1px solid var(--line);
-      background: #fff;
+      text-align: center;
+      color: var(--muted);
+      font-size: 13px;
     }
 
-    @media (max-width: 900px) {
+    @keyframes fadeInUp {
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    @media (max-width: 980px) {
       .hero { grid-template-columns: 1fr; }
-      .services { grid-template-columns: 1fr; }
+      .grid-4 { grid-template-columns: repeat(2, 1fr); }
+      .steps { grid-template-columns: repeat(2, 1fr); }
+      .step::after { display: none; }
+      .grid-3 { grid-template-columns: 1fr; }
+    }
+
+    @media (max-width: 640px) {
+      .section { padding: 64px 0; }
       .nav-links { display: none; }
+      .grid-4,
+      .steps { grid-template-columns: 1fr; }
+      .price-card strong { font-size: 30px; }
     }
   </style>
 </head>
@@ -153,60 +307,109 @@
   <header>
     <div class="container">
       <nav>
-        <div class="logo">AI技术工作室</div>
+        <div class="logo">Nova Campus Studio</div>
         <div class="nav-links">
-          <span>首页</span>
-          <span>服务内容</span>
-          <span>合作流程</span>
-          <span>联系方式</span>
+          <a href="#services">服务</a>
+          <a href="#process">流程</a>
+          <a href="#cases">案例</a>
+          <a href="#pricing">价格</a>
+          <a href="#contact">联系</a>
         </div>
       </nav>
     </div>
   </header>
 
   <main class="container">
-    <section class="hero">
+    <section class="section hero" id="top" style="animation-delay: .05s;">
       <div>
-        <span class="tag">学生接单 · 专业交付 · 轻量部署</span>
-        <h1>言葉工作室｜网站搭建｜自动化解决方案</h1>
-        <p>
-          我们专注为个人与小团队提供实用的技术服务：从展示型网站搭建，到日常流程自动化改造，
-          帮你以更低成本完成数字化落地。
-        </p>
+        <span class="badge">校园创意工作室 · 3天快速交付</span>
+        <h1>不会做网站？我帮你3天搞定。</h1>
+        <p>专为大学生、社团与比赛项目打造高质量展示网站，不用懂技术，直接交给我。</p>
         <div class="cta">
-          <a class="btn btn-primary" href="#services">查看服务</a>
-          <a class="btn btn-secondary" href="#contact">立即咨询</a>
+          <a class="btn btn-primary" href="#contact">立即咨询（微信）</a>
+          <a class="btn btn-secondary" href="#cases">查看案例</a>
         </div>
       </div>
-
-      <aside class="card info" id="contact">
-        <h3>快速合作信息</h3>
-        <p>适合对象：课程项目、社团活动、小型创业团队</p>
-        <p>交付方式：需求沟通 → 原型确认 → 开发上线</p>
-        <p>部署支持：GitHub Pages 静态站点可直接运行</p>
+      <aside class="card hero-side">
+        <h3>为什么是 Nova Campus Studio？</h3>
+        <p>更懂学生场景：社团招新、比赛展示、个人简历作品集。</p>
+        <p>不讲复杂技术，只讲清晰结果：好看、好用、按时交付。</p>
+        <p>静态网站结构，支持 GitHub Pages 直接部署上线。</p>
       </aside>
     </section>
 
-    <section class="section" id="services">
-      <div class="services">
-        <article class="card service">
-          <h3>网站搭建</h3>
-          <p>使用 HTML/CSS/JavaScript 构建简洁专业页面，适合展示作品、服务与活动信息。</p>
+    <section class="section" id="services" style="animation-delay: .1s;">
+      <h2>你可能正需要这些</h2>
+      <div class="grid-4">
+        <article class="card service-card"><h3>社团官网搭建</h3><p>展示社团介绍、活动动态、招新入口，一站式提升形象。</p></article>
+        <article class="card service-card"><h3>比赛项目展示页</h3><p>聚焦项目亮点、成果展示与答辩视觉表达，强化第一印象。</p></article>
+        <article class="card service-card"><h3>个人作品集网站</h3><p>为简历和面试提供专属链接，系统呈现你的项目能力。</p></article>
+        <article class="card service-card"><h3>AI快速生成网站</h3><p>结合 AI 与人工优化，在短周期内交付可上线的展示站点。</p></article>
+      </div>
+    </section>
+
+    <section class="section" id="process" style="animation-delay: .15s;">
+      <h2>合作流程</h2>
+      <div class="steps">
+        <article class="card step"><span>1</span><h3>微信沟通需求</h3><p>先确认用途、风格和交付时间。</p></article>
+        <article class="card step"><span>2</span><h3>1天出设计方案</h3><p>快速提供页面结构与视觉方向。</p></article>
+        <article class="card step"><span>3</span><h3>3天完成网站</h3><p>开发并适配手机与电脑端浏览。</p></article>
+        <article class="card step"><span>4</span><h3>满意后交付</h3><p>确认最终版本后交付源码与部署说明。</p></article>
+      </div>
+    </section>
+
+    <section class="section" id="cases" style="animation-delay: .2s;">
+      <h2>案例展示</h2>
+      <div class="grid-3">
+        <article class="card case-card">
+          <div class="image-placeholder">校园社团官网 · 图片占位</div>
+          <h3>校园社团官网</h3>
+          <p>展示社团历史、部门介绍与活动图库，增强社团品牌感。</p>
+          <div class="tag-list">3天完成｜响应式设计｜支持手机</div>
         </article>
-        <article class="card service">
-          <h3>自动化脚本</h3>
-          <p>根据你的工作流程定制自动化脚本，减少重复操作，提高效率。</p>
+        <article class="card case-card">
+          <div class="image-placeholder">创新比赛项目页 · 图片占位</div>
+          <h3>创新比赛项目页</h3>
+          <p>重点呈现项目价值、技术路线和成果数据，便于答辩演示。</p>
+          <div class="tag-list">3天完成｜响应式设计｜支持手机</div>
         </article>
-        <article class="card service">
-          <h3>AI应用集成</h3>
-          <p>协助接入常见 AI 能力（文本处理、问答、内容生成）到实际业务场景中。</p>
+        <article class="card case-card">
+          <div class="image-placeholder">学生个人作品集 · 图片占位</div>
+          <h3>学生个人作品集</h3>
+          <p>整合项目经历、技能标签与联系方式，提升求职展示效率。</p>
+          <div class="tag-list">3天完成｜响应式设计｜支持手机</div>
         </article>
+      </div>
+    </section>
+
+    <section class="section" id="pricing" style="animation-delay: .25s;">
+      <h2>学生友好价格</h2>
+      <div class="grid-3">
+        <article class="card price-card"><h3>展示页</h3><strong>¥199</strong><p>适合个人介绍、活动宣传、作品单页展示。</p></article>
+        <article class="card price-card featured"><h3>社团官网</h3><strong>¥399</strong><p>适合社团招新、组织介绍、活动信息更新。</p></article>
+        <article class="card price-card"><h3>项目网站</h3><strong>¥599</strong><p>适合比赛项目、创业团队、阶段性成果展示。</p></article>
+      </div>
+    </section>
+
+    <section class="section about" id="about" style="animation-delay: .3s;">
+      <h2>关于我</h2>
+      <div class="card">
+        <p>我是在校大学生，专门帮助学生与初创团队快速完成网站搭建与展示页面设计。</p>
+      </div>
+    </section>
+
+    <section class="section contact" id="contact" style="animation-delay: .35s;">
+      <h2>现在就把网站交给我。</h2>
+      <div class="card">
+        <div class="qr">微信二维码占位</div>
+        <p>微信号：NovaCampusStudio</p>
+        <p>一般24小时内回复，欢迎先发你的需求与预算范围。</p>
       </div>
     </section>
   </main>
 
   <footer>
-    © 2026 AI技术工作室 · 简洁、专业、可快速上线
+    © 2026 Nova Campus Studio · 校园创意网站工作室
   </footer>
 </body>
 </html>
