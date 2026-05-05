@@ -3,303 +3,191 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Nova Campus Studio｜校园网站搭建工作室</title>
+  <title>大学生AI效率工作室｜网站·自动化·内容系统</title>
+  <meta name="description" content="大学生AI效率工作室：帮助个人、商家、学生快速完成网站搭建、自动化工具、AI内容生成与效率系统。" />
   <style>
     :root {
-      --bg: #f8f9ff;
+      --bg: #f5f5f4;
       --surface: #ffffff;
-      --text: #1f2333;
-      --muted: #697189;
-      --primary: #6f7bff;
-      --primary-soft: #edf0ff;
-      --line: #e9eaf3;
-      --accent: #4fd1c5;
-      --shadow: 0 16px 36px rgba(60, 69, 97, 0.08);
+      --text: #1a1a1a;
+      --muted: #6b6b6b;
+      --line: #e7e5e4;
+      --primary: #111111;
+      --primary-soft: #f0efed;
+      --radius: 16px;
+      --shadow: 0 8px 24px rgba(0, 0, 0, 0.05);
     }
 
     * { box-sizing: border-box; }
     html { scroll-behavior: smooth; }
-
     body {
       margin: 0;
-      font-family: "PingFang SC", "Microsoft YaHei", system-ui, -apple-system, sans-serif;
+      font-family: "SF Pro Text", "PingFang SC", "Microsoft YaHei", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      background: var(--bg);
       color: var(--text);
-      background: linear-gradient(180deg, #f9faff 0%, #f7fbff 45%, #fdfcff 100%);
-      line-height: 1.7;
+      line-height: 1.65;
     }
 
-    .container {
-      width: min(1120px, 92%);
-      margin: 0 auto;
-    }
+    .container { width: min(1100px, 92%); margin: 0 auto; }
 
     header {
       position: sticky;
       top: 0;
+      background: rgba(245, 245, 244, 0.88);
+      backdrop-filter: blur(8px);
+      border-bottom: 1px solid var(--line);
       z-index: 10;
-      background: rgba(248, 249, 255, 0.85);
-      backdrop-filter: blur(10px);
-      border-bottom: 1px solid rgba(233, 234, 243, 0.8);
     }
 
     nav {
       display: flex;
       justify-content: space-between;
       align-items: center;
-      padding: 16px 0;
+      padding: 14px 0;
     }
 
-    .logo {
-      font-size: 18px;
-      font-weight: 700;
-      letter-spacing: 0.2px;
-    }
+    .logo { font-weight: 650; letter-spacing: 0.2px; }
+    .nav-links { display: flex; gap: 16px; }
+    .nav-links a { color: var(--muted); text-decoration: none; font-size: 14px; }
 
-    .nav-links {
-      display: flex;
-      gap: 18px;
-      font-size: 14px;
-    }
-
-    .nav-links a {
-      color: var(--muted);
-      text-decoration: none;
-    }
-
-    .section {
-      padding: 84px 0;
-      opacity: 0;
-      transform: translateY(24px);
-      animation: fadeInUp .7s ease forwards;
-    }
+    .section { padding: 78px 0; }
+    h1, h2, h3, p { margin: 0; }
+    h1 { font-size: clamp(32px, 5vw, 52px); line-height: 1.16; letter-spacing: -0.8px; }
+    h2 { font-size: clamp(24px, 3.8vw, 36px); letter-spacing: -0.4px; margin-bottom: 16px; }
+    .section-intro { color: var(--muted); margin-bottom: 28px; max-width: 700px; }
 
     .hero {
       display: grid;
-      grid-template-columns: 1.15fr 0.85fr;
-      gap: 28px;
+      grid-template-columns: 1.1fr 0.9fr;
+      gap: 24px;
       align-items: center;
-      padding-top: 64px;
+      padding-top: 52px;
     }
 
     .badge {
       display: inline-block;
-      padding: 7px 13px;
+      padding: 6px 12px;
       border-radius: 999px;
       background: var(--primary-soft);
-      color: var(--primary);
+      color: #3d3d3d;
       font-size: 13px;
-      font-weight: 600;
       margin-bottom: 14px;
     }
 
-    h1 {
-      margin: 0;
-      font-size: clamp(32px, 5vw, 50px);
-      line-height: 1.2;
-      letter-spacing: -0.8px;
-    }
+    .hero-subtitle { margin-top: 18px; color: var(--muted); font-size: 18px; }
 
-    .hero p {
-      margin: 18px 0 0;
-      color: var(--muted);
-      max-width: 620px;
-    }
-
-    .cta {
-      margin-top: 28px;
-      display: flex;
-      flex-wrap: wrap;
-      gap: 12px;
-    }
+    .cta-group { margin-top: 26px; display: flex; flex-wrap: wrap; gap: 12px; }
 
     .btn {
       display: inline-block;
-      text-decoration: none;
       border-radius: 12px;
       padding: 11px 18px;
       font-size: 14px;
       font-weight: 600;
-      transition: transform .2s ease, box-shadow .2s ease;
+      text-decoration: none;
+      transition: transform .2s ease;
     }
 
     .btn:hover { transform: translateY(-1px); }
-
-    .btn-primary {
-      background: var(--primary);
-      color: #fff;
-      box-shadow: 0 10px 24px rgba(111, 123, 255, 0.25);
-    }
-
-    .btn-secondary {
-      border: 1px solid var(--line);
-      color: var(--text);
-      background: var(--surface);
-    }
+    .btn-primary { background: var(--primary); color: #fff; }
+    .btn-secondary { background: var(--surface); border: 1px solid var(--line); color: var(--text); }
 
     .card {
       background: var(--surface);
       border: 1px solid var(--line);
-      border-radius: 20px;
-      padding: 24px;
+      border-radius: var(--radius);
+      padding: 22px;
       box-shadow: var(--shadow);
     }
 
-    .hero-side h3 {
-      margin: 0 0 12px;
-      font-size: 20px;
+    .visual-card pre {
+      margin: 0;
+      font-size: 12px;
+      line-height: 1.7;
+      color: #2f2f2f;
+      background: #f7f7f6;
+      border-radius: 12px;
+      border: 1px solid #ecebea;
+      padding: 14px;
+      overflow: auto;
     }
 
-    .hero-side p { color: var(--muted); margin: 0 0 10px; }
-
-    h2 {
-      margin: 0 0 20px;
-      font-size: clamp(24px, 4vw, 36px);
-      letter-spacing: -0.4px;
-    }
-
-    .grid-4 {
+    .grid-3, .grid-4 {
       display: grid;
-      grid-template-columns: repeat(4, 1fr);
       gap: 16px;
     }
 
-    .service-card h3,
-    .price-card h3,
-    .case-card h3 {
-      margin: 0 0 8px;
-      font-size: 19px;
-    }
+    .grid-4 { grid-template-columns: repeat(4, 1fr); }
+    .grid-3 { grid-template-columns: repeat(3, 1fr); }
 
-    .service-card p,
-    .price-card p,
-    .case-card p,
-    .about p,
-    .contact p { color: var(--muted); margin: 0; }
+    .service-card h3, .case-card h3, .process-step h3 { font-size: 18px; margin-bottom: 8px; }
+    .service-card p, .case-card p, .process-step p, .metric p, footer { color: var(--muted); }
 
-    .steps {
-      display: grid;
-      grid-template-columns: repeat(4, 1fr);
-      gap: 16px;
-    }
+    .trust-wrap { display: grid; grid-template-columns: 2fr 1fr; gap: 16px; }
+    .trust-list { display: grid; gap: 12px; }
+    .trust-item { padding: 14px 16px; border: 1px solid var(--line); border-radius: 12px; background: #fbfbfb; }
+    .metrics { display: grid; gap: 12px; }
+    .metric strong { display: block; font-size: 30px; line-height: 1.1; margin-bottom: 4px; }
 
-    .step {
-      position: relative;
-      padding-top: 8px;
-    }
-
-    .step span {
-      display: inline-flex;
-      width: 32px;
-      height: 32px;
-      border-radius: 50%;
-      align-items: center;
-      justify-content: center;
-      font-weight: 700;
-      background: var(--primary-soft);
-      color: var(--primary);
-      margin-bottom: 10px;
-    }
-
-    .step:not(:last-child)::after {
-      content: "";
-      position: absolute;
-      top: 24px;
-      right: -10px;
-      width: 20px;
-      height: 2px;
-      background: #d7dcf8;
-    }
-
-    .grid-3 {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 16px;
-    }
-
-    .image-placeholder {
-      border-radius: 14px;
-      background: linear-gradient(135deg, #f2f4ff, #eef9ff);
-      border: 1px dashed #cbd3ff;
-      min-height: 144px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      color: #7682b5;
-      font-size: 14px;
-      margin-bottom: 14px;
-    }
-
-    .tag-list {
-      margin-top: 12px;
-      font-size: 13px;
-      color: #6f7698;
-      background: #f5f7ff;
+    .tag {
+      display: inline-block;
+      margin-top: 10px;
+      padding: 6px 10px;
       border-radius: 10px;
-      padding: 8px 10px;
-      display: inline-block;
+      font-size: 12px;
+      color: #4f4f4f;
+      background: #f3f3f2;
     }
 
-    .price-card strong {
-      font-size: 34px;
-      line-height: 1;
-      display: inline-block;
-      margin: 8px 0 12px;
-      color: var(--primary);
+    .process { display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; }
+    .process-step span {
+      display: inline-flex;
+      width: 30px;
+      height: 30px;
+      border-radius: 50%;
+      justify-content: center;
+      align-items: center;
+      background: var(--primary-soft);
+      margin-bottom: 10px;
+      font-weight: 650;
     }
 
-    .price-card.featured {
-      border-color: #cfd5ff;
-      background: linear-gradient(180deg, #ffffff, #f7f8ff);
-    }
+    .cta-banner { text-align: center; }
+    .cta-banner h2 { margin-bottom: 10px; }
+    .cta-banner p { color: var(--muted); margin-bottom: 20px; }
 
-    .about,
-    .contact {
-      max-width: 760px;
-    }
-
-    .contact .qr {
-      margin: 16px 0;
-      width: 180px;
+    .contact-grid { display: grid; grid-template-columns: 170px 1fr; gap: 16px; align-items: center; }
+    .qr {
+      width: 170px;
       aspect-ratio: 1;
-      border-radius: 16px;
-      border: 1px dashed #bac2ec;
-      background: #f6f8ff;
+      border-radius: 14px;
+      border: 1px dashed #c7c5c2;
+      background: #faf9f8;
       display: flex;
       align-items: center;
       justify-content: center;
-      color: #6f789e;
-      font-size: 14px;
+      color: #777;
+      font-size: 13px;
     }
 
     footer {
-      padding: 26px 0 34px;
       border-top: 1px solid var(--line);
-      text-align: center;
-      color: var(--muted);
+      padding: 26px 0 32px;
       font-size: 13px;
+      text-align: center;
     }
 
-    @keyframes fadeInUp {
-      to {
-        opacity: 1;
-        transform: translateY(0);
-      }
-    }
-
-    @media (max-width: 980px) {
-      .hero { grid-template-columns: 1fr; }
-      .grid-4 { grid-template-columns: repeat(2, 1fr); }
-      .steps { grid-template-columns: repeat(2, 1fr); }
-      .step::after { display: none; }
+    @media (max-width: 940px) {
+      .hero, .trust-wrap, .grid-4, .process { grid-template-columns: 1fr 1fr; }
       .grid-3 { grid-template-columns: 1fr; }
     }
 
     @media (max-width: 640px) {
-      .section { padding: 64px 0; }
+      .section { padding: 62px 0; }
       .nav-links { display: none; }
-      .grid-4,
-      .steps { grid-template-columns: 1fr; }
-      .price-card strong { font-size: 30px; }
+      .hero, .grid-4, .trust-wrap, .process, .contact-grid { grid-template-columns: 1fr; }
+      .hero-subtitle { font-size: 16px; }
+      .qr { width: 140px; }
     }
   </style>
 </head>
@@ -307,12 +195,12 @@
   <header>
     <div class="container">
       <nav>
-        <div class="logo">Nova Campus Studio</div>
+        <div class="logo">大学生AI效率工作室</div>
         <div class="nav-links">
           <a href="#services">服务</a>
+          <a href="#trust">优势</a>
+          <a href="#portfolio">案例</a>
           <a href="#process">流程</a>
-          <a href="#cases">案例</a>
-          <a href="#pricing">价格</a>
           <a href="#contact">联系</a>
         </div>
       </nav>
@@ -320,96 +208,100 @@
   </header>
 
   <main class="container">
-    <section class="section hero" id="top" style="animation-delay: .05s;">
+    <section class="section hero" id="top">
       <div>
-        <span class="badge">校园创意工作室 · 3天快速交付</span>
-        <h1>不会做网站？我帮你3天搞定。</h1>
-        <p>专为大学生、社团与比赛项目打造高质量展示网站，不用懂技术，直接交给我。</p>
-        <div class="cta">
+        <span class="badge">可真实接单 · 平均3天交付</span>
+        <h1>大学生AI效率工作室</h1>
+        <p class="hero-subtitle">帮助个人、商家、学生，用AI快速完成：网站｜自动化｜内容生成｜效率系统。</p>
+        <div class="cta-group">
           <a class="btn btn-primary" href="#contact">立即咨询（微信）</a>
-          <a class="btn btn-secondary" href="#cases">查看案例</a>
+          <a class="btn btn-secondary" href="#portfolio">查看案例</a>
         </div>
       </div>
-      <aside class="card hero-side">
-        <h3>为什么是 Nova Campus Studio？</h3>
-        <p>更懂学生场景：社团招新、比赛展示、个人简历作品集。</p>
-        <p>不讲复杂技术，只讲清晰结果：好看、好用、按时交付。</p>
-        <p>静态网站结构，支持 GitHub Pages 直接部署上线。</p>
+      <aside class="card visual-card" aria-label="工作场景视觉">
+<pre>project: client-growth-site
+status: in delivery
+
+- Landing page  ✅
+- WeChat lead CTA ✅
+- Mobile adapt    ✅
+
+$ deploy --fast
+Build complete in 2.8s
+</pre>
       </aside>
     </section>
 
-    <section class="section" id="services" style="animation-delay: .1s;">
-      <h2>你可能正需要这些</h2>
+    <section class="section" id="services">
+      <h2>我们能帮你做什么</h2>
+      <p class="section-intro">从想法到交付，聚焦「能直接使用」和「能产生结果」。</p>
       <div class="grid-4">
-        <article class="card service-card"><h3>社团官网搭建</h3><p>展示社团介绍、活动动态、招新入口，一站式提升形象。</p></article>
-        <article class="card service-card"><h3>比赛项目展示页</h3><p>聚焦项目亮点、成果展示与答辩视觉表达，强化第一印象。</p></article>
-        <article class="card service-card"><h3>个人作品集网站</h3><p>为简历和面试提供专属链接，系统呈现你的项目能力。</p></article>
-        <article class="card service-card"><h3>AI快速生成网站</h3><p>结合 AI 与人工优化，在短周期内交付可上线的展示站点。</p></article>
+        <article class="card service-card"><h3>AI网站搭建</h3><p>帮你快速上线个人或工作室官网，提升第一印象与转化效率。</p></article>
+        <article class="card service-card"><h3>自动化工具搭建</h3><p>把重复流程自动化，减少人工操作，节省大量时间成本。</p></article>
+        <article class="card service-card"><h3>AI内容生成系统</h3><p>建立稳定产出机制，持续生成文案、脚本或图文素材。</p></article>
+        <article class="card service-card"><h3>简历/作品集优化</h3><p>突出核心能力和项目结果，让HR或客户更快看懂你的价值。</p></article>
+        <article class="card service-card"><h3>小项目快速开发</h3><p>低成本验证业务想法，先跑起来再优化，缩短试错周期。</p></article>
       </div>
     </section>
 
-    <section class="section" id="process" style="animation-delay: .15s;">
-      <h2>合作流程</h2>
-      <div class="steps">
-        <article class="card step"><span>1</span><h3>微信沟通需求</h3><p>先确认用途、风格和交付时间。</p></article>
-        <article class="card step"><span>2</span><h3>1天出设计方案</h3><p>快速提供页面结构与视觉方向。</p></article>
-        <article class="card step"><span>3</span><h3>3天完成网站</h3><p>开发并适配手机与电脑端浏览。</p></article>
-        <article class="card step"><span>4</span><h3>满意后交付</h3><p>确认最终版本后交付源码与部署说明。</p></article>
+    <section class="section" id="trust">
+      <h2>为什么选择我们</h2>
+      <div class="trust-wrap">
+        <div class="card trust-list">
+          <div class="trust-item">✔ 大学生团队｜沟通直接</div>
+          <div class="trust-item">✔ 价格透明｜交付快速</div>
+          <div class="trust-item">✔ AI效率｜成本更低</div>
+        </div>
+        <div class="metrics">
+          <div class="card metric"><strong>12+</strong><p>已完成项目</p></div>
+          <div class="card metric"><strong>3天</strong><p>平均交付</p></div>
+        </div>
       </div>
     </section>
 
-    <section class="section" id="cases" style="animation-delay: .2s;">
+    <section class="section" id="portfolio">
       <h2>案例展示</h2>
       <div class="grid-3">
-        <article class="card case-card">
-          <div class="image-placeholder">校园社团官网 · 图片占位</div>
-          <h3>校园社团官网</h3>
-          <p>展示社团历史、部门介绍与活动图库，增强社团品牌感。</p>
-          <div class="tag-list">3天完成｜响应式设计｜支持手机</div>
-        </article>
-        <article class="card case-card">
-          <div class="image-placeholder">创新比赛项目页 · 图片占位</div>
-          <h3>创新比赛项目页</h3>
-          <p>重点呈现项目价值、技术路线和成果数据，便于答辩演示。</p>
-          <div class="tag-list">3天完成｜响应式设计｜支持手机</div>
-        </article>
-        <article class="card case-card">
-          <div class="image-placeholder">学生个人作品集 · 图片占位</div>
-          <h3>学生个人作品集</h3>
-          <p>整合项目经历、技能标签与联系方式，提升求职展示效率。</p>
-          <div class="tag-list">3天完成｜响应式设计｜支持手机</div>
-        </article>
+        <article class="card case-card"><h3>AI作品集网站</h3><p>为求职用户搭建结构清晰、可投递链接的作品集页面。</p><span class="tag">练习项目｜已上线模板</span></article>
+        <article class="card case-card"><h3>自动生成内容工具</h3><p>输入主题后自动生成小红书文案初稿，减少70%写作时间。</p><span class="tag">内部工具｜效率提升</span></article>
+        <article class="card case-card"><h3>简历优化案例</h3><p>重构叙事与关键词匹配，帮助用户更快通过初筛环节。</p><span class="tag">个人服务｜结果导向</span></article>
+        <article class="card case-card"><h3>小型业务官网</h3><p>为本地小店完成品牌展示与微信咨询入口整合。</p><span class="tag">商业项目｜咨询转化</span></article>
       </div>
     </section>
 
-    <section class="section" id="pricing" style="animation-delay: .25s;">
-      <h2>学生友好价格</h2>
-      <div class="grid-3">
-        <article class="card price-card"><h3>展示页</h3><strong>¥199</strong><p>适合个人介绍、活动宣传、作品单页展示。</p></article>
-        <article class="card price-card featured"><h3>社团官网</h3><strong>¥399</strong><p>适合社团招新、组织介绍、活动信息更新。</p></article>
-        <article class="card price-card"><h3>项目网站</h3><strong>¥599</strong><p>适合比赛项目、创业团队、阶段性成果展示。</p></article>
+    <section class="section" id="process">
+      <h2>接单流程</h2>
+      <div class="process">
+        <article class="card process-step"><span>1</span><h3>添加微信</h3><p>先建立联系，快速确认你的场景和目标。</p></article>
+        <article class="card process-step"><span>2</span><h3>说明需求</h3><p>明确功能、风格、预算与交付时间。</p></article>
+        <article class="card process-step"><span>3</span><h3>给方案报价</h3><p>提供可执行方案与透明报价，不绕弯。</p></article>
+        <article class="card process-step"><span>4</span><h3>快速交付</h3><p>按约定节奏推进并及时反馈进度。</p></article>
       </div>
     </section>
 
-    <section class="section about" id="about" style="animation-delay: .3s;">
-      <h2>关于我</h2>
-      <div class="card">
-        <p>我是在校大学生，专门帮助学生与初创团队快速完成网站搭建与展示页面设计。</p>
+    <section class="section">
+      <div class="card cta-banner">
+        <h2>有想法？我们帮你用AI快速实现。</h2>
+        <p>现在就发需求，我们会在24小时内回复可执行建议。</p>
+        <a class="btn btn-primary" href="#contact">👉 添加微信咨询</a>
       </div>
     </section>
 
-    <section class="section contact" id="contact" style="animation-delay: .35s;">
-      <h2>现在就把网站交给我。</h2>
-      <div class="card">
-        <div class="qr">微信二维码占位</div>
-        <p>微信号：NovaCampusStudio</p>
-        <p>一般24小时内回复，欢迎先发你的需求与预算范围。</p>
+    <section class="section" id="contact">
+      <h2>立即联系</h2>
+      <div class="card contact-grid">
+        <div class="qr">微信二维码</div>
+        <div>
+          <p>微信：AIEfficiencyStudio</p>
+          <p>邮箱：hello@ai-efficiency-studio.com</p>
+          <p>GitHub：github.com/ai-efficiency-studio</p>
+        </div>
       </div>
     </section>
   </main>
 
   <footer>
-    © 2026 Nova Campus Studio · 校园创意网站工作室
+    © 2026 大学生AI效率工作室 · 专注真实可交付的 AI 效率服务
   </footer>
 </body>
 </html>
